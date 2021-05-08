@@ -20,13 +20,17 @@ class Application {
 
     this.app.use(this.corsAdapter)
     this.app.options('*', this.corsAdapter)
+
+    const routes = this.router.build()
+    this.app.use(routes);
+
   }
 
   
 
   init(port = 3000) {
     this.applyMidlewares();
-    this.routes = this.router.build()
+   
     this.app.listen(port);
     console.log(`Listening on port ${port}`)
   }
