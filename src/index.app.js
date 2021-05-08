@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import AppRouter from './index.routes.js'
 import Application from './config/application.js'
-
+import databaseAdapter from './config/database.js';
 
 dotenv.config()
 //import swaggerUi from 'swagger-ui-express';
@@ -16,7 +16,8 @@ const appDeps = {
   routerAdapter: express, 
   repository: {}, 
   corsAdapter: cors(), 
-  Router: router
+  Router: router,
+  databaseAdapter,
 }
 
 const app = new Application(appDeps);

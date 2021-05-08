@@ -21,7 +21,7 @@ const LabSchema = new Schema({
     required: true,
     trim: true
   },
-  labsAssociados: {type: [Schema.ObjectId], ref: 'Laboratorio'},
+  
 });
 
 const Exame = model('Laboratorio', LabSchema)

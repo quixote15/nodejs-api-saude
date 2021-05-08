@@ -17,7 +17,8 @@ const exameSchema = new Schema({
     enum: ['ativo', 'inativo'],
     required: true,
     trim: true
-  }
+  },
+  labsAssociados: {type: [Schema.ObjectId], ref: 'Laboratorio'},
 });
 
 const Exame = model('Exame', exameSchema)

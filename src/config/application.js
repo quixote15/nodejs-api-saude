@@ -1,10 +1,11 @@
 class Application {
-  constructor({routerAdapter, repository, corsAdapter, Router}) {
+  constructor({routerAdapter, repository, corsAdapter, Router, databaseAdapter}) {
     this.routerAdapter = routerAdapter;
     this.app = routerAdapter();
     this.repository = repository;
     this.corsAdapter = corsAdapter;
     this.router = Router;
+    this.databaseAdapter = databaseAdapter;
   }
 
   //================================================
@@ -23,14 +24,18 @@ class Application {
 
     const routes = this.router.build()
     this.app.use(routes);
-
   }
 
+  async connectDb() {
+    this.databaseAdapter.connect();
+    return this;
+  }
   
 
   init(port = 3000) {
     this.applyMidlewares();
-   
+    this.connectDb();
+    
     this.app.listen(port);
     console.log(`Listening on port ${port}`)
   }
