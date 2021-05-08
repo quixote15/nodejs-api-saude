@@ -1,20 +1,47 @@
-class ExamesController {
+import ExamesRepositoryFactory from '../repository/factories/exameFactory.js';
+import SchemaValidator from '../utils/validator.js'
 
-  find(req, res) {
+const repository = ExamesRepositoryFactory.createInstance();
+const validator = new SchemaValidator();
 
+function find(req, res) {
+
+}
+
+async function create(req, res) {
+  const {nome, tipo} = req.body;
+  const exame = {
+    nome,
+    tipo,
+    status: 'ativo'
   }
+  try {
+    console.log('validator: ', validator);
+    
+    const errors = validator.validate(exame);
+    
+    if(errors.length > 0) {
+      return res.status(403).send(errors);
+    }
 
-  create(req, res) {
+    await repository.create(exame);
 
-  }
-
-  update(req, res) {
-
-  }
-
-  delete(req, res) {
-
+    res.send('Exame criado.')
+  } catch (error) {
+    res.status(500).send({message: 'Erro interno.'});
   }
 }
 
-export default ExamesController
+function update(req, res) {
+
+}
+
+function remove(req, res) {
+
+}
+
+
+
+export default {
+  create
+}

@@ -1,4 +1,4 @@
-import BaseRepository from "./base.repository";
+import BaseRepository from "./base.repository.js";
 
 class ExameRepository extends BaseRepository{
   
@@ -6,3 +6,5 @@ class ExameRepository extends BaseRepository{
     return this.dbConnection.find(query)
   }
 }
+
+export default ExameRepository;

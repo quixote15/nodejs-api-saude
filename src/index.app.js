@@ -7,9 +7,14 @@ import AppRouter from './index.routes.js'
 import Application from './config/application.js'
 import databaseAdapter from './config/database.js';
 
+import ExamesController from './controllers/exames.controller.js'
+
 dotenv.config()
 //import swaggerUi from 'swagger-ui-express';
-const routerDeps = {routerAdapter: new Router()};
+const routerDeps = {
+  routerAdapter: new Router(),
+  examesController: ExamesController
+};
 const router = new AppRouter(routerDeps);
 
 const appDeps = {

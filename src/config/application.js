@@ -22,7 +22,7 @@ class Application {
     this.app.use(this.corsAdapter)
     this.app.options('*', this.corsAdapter)
 
-    const routes = this.router.build()
+    const routes = this.router.build();
     this.app.use(routes);
   }
 
@@ -35,7 +35,7 @@ class Application {
   init(port = 3000) {
     this.applyMidlewares();
     this.connectDb();
-    
+
     this.app.listen(port);
     console.log(`Listening on port ${port}`)
   }

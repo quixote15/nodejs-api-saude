@@ -1,7 +1,10 @@
 
+
 class AppRouter {
-  constructor({routerAdapter}){
+  constructor({routerAdapter, examesController}){
     this.router = routerAdapter;
+    this.examesController = examesController
+    
   }
 
   setApiRoutes() {
@@ -13,6 +16,9 @@ class AppRouter {
   } 
 
   setExamesRoutes() {
+    this.router
+      .route('/api/exames')
+      .post(this.examesController.create);
     return this;
   }
 
@@ -21,7 +27,7 @@ class AppRouter {
   }
 
   build() {
-    console.log('This returns all routes')
+    console.log('This returns all routes', this.router)
     this
     .setApiRoutes()
     .setExamesRoutes()
