@@ -8,12 +8,14 @@ import Application from './config/application.js'
 import databaseAdapter from './config/database.js';
 
 import ExamesController from './controllers/exames.controller.js'
+import LabsController from './controllers/labs.controller.js'
 
 dotenv.config()
 //import swaggerUi from 'swagger-ui-express';
 const routerDeps = {
   routerAdapter: new Router(),
-  examesController: ExamesController
+  examesController: ExamesController,
+  labsController: LabsController
 };
 const router = new AppRouter(routerDeps);
 

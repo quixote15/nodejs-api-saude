@@ -2,9 +2,10 @@
 
 class AppRouter {
 
-  constructor({routerAdapter, examesController}){
+  constructor({routerAdapter, examesController, labsController}){
     this.router = routerAdapter;
-    this.examesController = examesController
+    this.examesController = examesController;
+    this.labsController = labsController;
     
   }
 
@@ -30,6 +31,9 @@ class AppRouter {
   }
 
   setLabsRoutes() {
+    this.router
+    .route('/api/labs')
+    .post(this.labsController.create)
     return this;
   }
 

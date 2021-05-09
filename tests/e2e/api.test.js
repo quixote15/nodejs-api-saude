@@ -69,9 +69,12 @@ describe(labsUrl,  () => {
   it('it should create a new lab', async() => {
     const response = await request(app)
     .post(labsUrl)
-    .send({})
+    .send({
+      nome: 'Lab jardim hebrom II',
+      endereco: 'Av. Souza lima, 1200 - Jardim hebrom - SP'
+    })
     .expect(200);
-
+    console.log(response.body)
     assert.ok(response.status);
     assert.deepStrictEqual(response.text,'Laboratorio criado.')
   })
