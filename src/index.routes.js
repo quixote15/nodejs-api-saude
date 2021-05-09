@@ -1,6 +1,7 @@
 
 
 class AppRouter {
+
   constructor({routerAdapter, examesController}){
     this.router = routerAdapter;
     this.examesController = examesController
@@ -20,6 +21,11 @@ class AppRouter {
       .route('/api/exames')
       .get(this.examesController.find)
       .post(this.examesController.create);
+
+    this.router
+      .route('/api/exames/:id')
+      .delete(this.examesController.remove)
+      .put(this.examesController.update)
     return this;
   }
 

@@ -21,7 +21,7 @@ class BaseRepository extends IWrite{
     return this.dbSchema.findOneAndUpdate(schemaId, data);
   }
   
-  async delete(schemaId){
+  async remove(schemaId){
     return this.dbSchema.findOneAndUpdate(schemaId, {status: 'inativo'});
   }
 }

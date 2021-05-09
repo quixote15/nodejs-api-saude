@@ -37,17 +37,31 @@ async function create(req, res) {
   }
 }
 
-function update(req, res) {
-
+async function update(req, res) {
+  try {
+    const examId = req.params.id;
+    await repository.update({_id: examId}, req.body);
+    res.send('Exame atualizado.')
+  } catch (error) {
+    res.status(500).send(error);
+  }
 }
 
-function remove(req, res) {
-
+async function remove(req, res) {
+  try {
+      const examId = req.params.id;
+      await repository.remove({_id: examId});
+      res.send('Exame removido.')
+    } catch (error) {
+      res.status(500).send(error);
+    }
 }
 
 
 
 export default {
   create,
-  find
+  find,
+  update,
+  remove
 }
