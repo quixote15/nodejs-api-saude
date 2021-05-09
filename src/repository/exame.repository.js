@@ -2,7 +2,7 @@ import BaseRepository from "./base.repository.js";
 
 class ExameRepository extends BaseRepository{
   
-  async find(query) {
+  async findActive(query) {
     return this.dbConnection.find(query)
   }
 }

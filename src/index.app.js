@@ -28,8 +28,9 @@ const appDeps = {
 const app = new Application(appDeps);
 const PORT = process.env.PORT || 3000;
 
-app.init(PORT)
+const serverInstance = app.init(PORT)
 
 
 
 
+export default serverInstance

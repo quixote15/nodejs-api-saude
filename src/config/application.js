@@ -38,6 +38,7 @@ class Application {
 
     this.app.listen(port);
     console.log(`Listening on port ${port}`)
+    return this.app;
   }
 }
 

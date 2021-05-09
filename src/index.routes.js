@@ -18,6 +18,7 @@ class AppRouter {
   setExamesRoutes() {
     this.router
       .route('/api/exames')
+      .get(this.examesController.find)
       .post(this.examesController.create);
     return this;
   }

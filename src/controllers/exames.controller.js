@@ -4,8 +4,13 @@ import SchemaValidator from '../utils/validator.js'
 const repository = ExamesRepositoryFactory.createInstance();
 const validator = new SchemaValidator();
 
-function find(req, res) {
-
+async function find(req, res) {
+  try {
+    const result = await repository.find({});
+    res.send(result);
+  } catch (error) {
+    res.status(403).send(error);
+  }
 }
 
 async function create(req, res) {
@@ -43,5 +48,6 @@ function remove(req, res) {
 
 
 export default {
-  create
+  create,
+  find
 }

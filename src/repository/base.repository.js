@@ -9,7 +9,7 @@ class BaseRepository extends IWrite{
   }
 
   async find(query) {
-    return this.dbSchema.find(query);
+    return this.dbSchema.find({status: 'ativo'});
   }
   
   async create(schemaData) {
