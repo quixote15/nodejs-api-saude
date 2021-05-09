@@ -100,14 +100,14 @@ api-project/
  └─ package.json
 ```
 
-- :file_folder: [src/](config): Dir com as variáveis  e classes que configuram e inicializam do ambiente (ex.: conexao com banco de dados)
-- :file_folder: [src/](controllers): Dir com Controllers responsáveis pelos endpoints
-- :file_folder: [src/](domain): Dir com domain entities e lógica de negócio
-- :file_folder: [src/](models): Dir com models e schemas
-- :file_folder: [src/](repository): Dir com adapters para operaçoes no banco de dados 
-- :file_folder: [src/](services): Dir com services que precisem executar alguma regra de negócio
-- :file_folder: [src/](utils): Dir com classes e metodos utilitários em geral
-- :file_folder: [test/](test): Dir com os testes das rotas e arquivos que auxiliam a automação
+- :file_folder: [src/config](src/config): Dir com as variáveis  e classes que configuram e inicializam do ambiente (ex.: conexao com banco de dados)
+- :file_folder: [src/controllers](src/controllers): Dir com Controllers responsáveis pelos endpoints
+- :file_folder: [src/domain](src/domain): Dir com domain entities e lógica de negócio
+- :file_folder: [src/models](src/models): Dir com models e schemas
+- :file_folder: [src/repository](src/repository): Dir com adapters para operaçoes no banco de dados 
+- :file_folder: [src/services](src/services): Dir com services que precisem executar alguma regra de negócio
+- :file_folder: [src/utils](src/utils): Dir com classes e metodos utilitários em geral
+- :file_folder: [tests/](tests): Dir com os testes das rotas e arquivos que auxiliam a automação
 - :page_with_curl: [package.json](package.json): Arquivo com informações das dependências do projeto, licença, scripts, autor, etc. Para saber mais [clique aqui](https://docs.npmjs.com/files/package.json)
 
 ### Ambiente
