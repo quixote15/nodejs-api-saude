@@ -33,7 +33,7 @@ Todos os comandos abaixo são feitos no terminal
 **1** - Faça um clone do repositório e acesse o diretório criado pelo clone.
 
 ```sh
-git clone https://github.com/PauloGoncalvesBH/sample-supertest && cd sample-supertest
+git clonehttps://github.com/quixote15/nodejs-api-saude.git && cd nodejs-api-saude
 ```
 
 **2** - Instale as dependências do projeto:
@@ -44,29 +44,26 @@ npm install
 
 ### Testes de API
 
-Os testes foram realizados em cima do [Serverest](https://github.com/PauloGoncalvesBH/ServeRest), que fornece rotas REST para fins de estudos.
+Os testes foram realizados em utiliando TDD e foram principalmente teste end-to-end.
 
 #### Executando os testes
 
-Caso queira apenas rodar os testes, sem precisar subir ambiente, execute o seguinte comando:
-
-> Os testes serão executados em cima da página [serverest.dev](http://serverest.dev/)
-
-```sh
-npm run test
-```
-
-Para executar os testes localmente (_http://localhost:3000_) é preciso subir o ambiente local utilizando NPM ou Docker. [Verifique aqui como](https://github.com/PauloGoncalvesBH/ServeRest#ambientes-dispon%C3%ADveis). Após isso execute:
+Para executar os testes localmente (_http://localhost:3000_) é preciso subir o ambiente local utilizando NPM ou Docker.
+Após isso execute:
 
 ```sh
 npm test
 ```
 
-As variáveis por ambiente estão definidos dentro dos arquivos _*.config.js_ em [config/](config).
+Para gerar o relatório de cobertura de testes execute:
+
+```sh
+npm test:cov
+```
 
 #### Resultado
 
-O resultado dos testes são apresentados no terminal e em report HTML gerado com [mochawesome](https://www.npmjs.com/package/mochawesome).
+O resultado dos testes são apresentados no terminal e em report HTML gerado com [NYC](https://www.npmjs.com/package/nyc).
 
 <img src=https://user-images.githubusercontent.com/29241659/83446839-cbe8d380-a425-11ea-991b-c36cb0337859.png height="400">
 
