@@ -65,7 +65,7 @@ npm test:cov
 
 O resultado dos testes são apresentados no terminal e em report HTML gerado com [NYC](https://www.npmjs.com/package/nyc).
 
-<img src=https://user-images.githubusercontent.com/29241659/83446839-cbe8d380-a425-11ea-991b-c36cb0337859.png height="400">
+<img src=https://github.com/quixote15/nodejs-api-saude/blob/main/assets/tests.png height="400">
 
 ## Sobre o projeto
 
