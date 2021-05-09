@@ -38,11 +38,23 @@ async function create(req, res) {
 }
 
 async function update(req, res) {
-
+   try {
+    const labId = req.params.id;
+    await repository.update({_id: labId}, req.body);
+    res.send('Laboratorio atualizado.')
+  } catch (error) {
+    res.status(500).send(error);
+  }
 }
 
 async function remove(req, res) {
-  
+   try {
+      const labId = req.params.id;
+      await repository.remove({_id: labId});
+      res.send('Laboratorio removido.')
+    } catch (error) {
+      res.status(500).send(error);
+    }
 }
 
 export default {

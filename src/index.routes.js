@@ -35,6 +35,10 @@ class AppRouter {
     .route('/api/labs')
     .get(this.labsController.find)
     .post(this.labsController.create)
+    this.router
+    .route('/api/labs/:id')
+    .delete(this.labsController.remove)
+    .put(this.labsController.update)
     return this;
   }
 

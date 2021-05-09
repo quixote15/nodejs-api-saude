@@ -65,26 +65,46 @@ describe('Api E2e Test Suite', () => {
   });
 
 
-describe(labsUrl,  () => {
-  it('should create a new lab', async() => {
-    const response = await request(app)
-    .post(labsUrl)
-    .send({
-      nome: 'Lab jardim hebrom II',
-      endereco: 'Av. Souza lima, 1200 - Jardim hebrom - SP'
-    })
-    .expect(200);
-  
-    assert.ok(response.status);
-    assert.deepStrictEqual(response.text,'Laboratorio criado.')
-  });
-
-  it('should list all active labs', async () => {
-    const response = await request(app)
-    .get(labsUrl)
-    .expect(200);
+  describe(labsUrl,  () => {
+    it('should create a new lab', async() => {
+      const response = await request(app)
+      .post(labsUrl)
+      .send({
+        nome: 'Lab jardim hebrom II',
+        endereco: 'Av. Souza lima, 1200 - Jardim hebrom - SP'
+      })
+      .expect(200);
     
-    assert.ok(response.status);
+      assert.ok(response.status);
+      assert.deepStrictEqual(response.text,'Laboratorio criado.')
+    });
+
+    it('should list all active labs', async () => {
+      const response = await request(app)
+      .get(labsUrl)
+      .expect(200);
+      
+      assert.ok(response.status);
+    });
+
+    it('should update a lab', async () => {
+      const labId = '609867a45f6dc686c6250c57'
+      const response = await request(app)
+      .put(`${labsUrl}/${labId}`)
+      .send({nome: 'Lab Jardim 3'})
+      .expect(200);
+
+      assert.ok(response.status);
+      assert.deepStrictEqual(response.text, 'Laboratorio atualizado.')
+    })
+    it('should remove a lab', async () => {
+      const labId = '609867a45f6dc686c6250c57'
+      const response = await request(app)
+      .delete(`${labsUrl}/${labId}`)
+      .expect(200);
+
+      assert.ok(response.status);
+      assert.deepStrictEqual(response.text, 'Laboratorio removido.')
+    })
   })
-})
 })
