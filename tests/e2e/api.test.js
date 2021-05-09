@@ -66,7 +66,7 @@ describe('Api E2e Test Suite', () => {
 
 
 describe(labsUrl,  () => {
-  it('it should create a new lab', async() => {
+  it('should create a new lab', async() => {
     const response = await request(app)
     .post(labsUrl)
     .send({
@@ -74,9 +74,17 @@ describe(labsUrl,  () => {
       endereco: 'Av. Souza lima, 1200 - Jardim hebrom - SP'
     })
     .expect(200);
-    console.log(response.body)
+  
     assert.ok(response.status);
     assert.deepStrictEqual(response.text,'Laboratorio criado.')
+  });
+
+  it('should list all active labs', async () => {
+    const response = await request(app)
+    .get(labsUrl)
+    .expect(200);
+    
+    assert.ok(response.status);
   })
 })
 })

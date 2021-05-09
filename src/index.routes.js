@@ -33,6 +33,7 @@ class AppRouter {
   setLabsRoutes() {
     this.router
     .route('/api/labs')
+    .get(this.labsController.find)
     .post(this.labsController.create)
     return this;
   }

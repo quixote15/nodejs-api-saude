@@ -5,7 +5,12 @@ const repository = LabRepositoryFactory.createInstance();
 const validator = new SchemaValidator();
 
 async function find(req, res) {
-  
+   try {
+    const result = await repository.find({});
+    res.send(result);
+  } catch (error) {
+    res.status(403).send(error);
+  }
 }
 
 async function create(req, res) {
