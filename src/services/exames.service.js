@@ -23,6 +23,10 @@ class ExamesService {
       throw new ValidationError('Laboratório está desativado.');
     }
 
+    if(exame.status !== 'ativo') {
+      throw new ValidationError('Exame está desativado.');
+    }
+
     if(alreadyAssociated) {
       throw new ValidationError('Exame já está associado com esse laboratório.');
     }
