@@ -58,10 +58,20 @@ async function remove(req, res) {
 }
 
 
+async function associarLab(req, res) {
+  try {
+    const { exame_id, lab_id} = req.body;
+    res.send(req.body);
+  } catch (error) {
+    res.status(500).send(error)
+  }
+}
+
 
 export default {
   create,
   find,
   update,
-  remove
+  remove,
+  associarLab
 }

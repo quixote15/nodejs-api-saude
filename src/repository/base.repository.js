@@ -11,6 +11,9 @@ class BaseRepository extends IWrite{
   async find(query) {
     return this.dbSchema.find({status: 'ativo'});
   }
+  async findOne(id) {
+    return this.dbSchema.findById(id);
+  }
   
   async create(schemaData) {
     const newSchema = new this.dbSchema(schemaData);

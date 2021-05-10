@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "npx mocha -w --parallel **/**/*.test.js",
+    "test:unit": "npx mocha -w --parallel **/unit/*.test.js",
     "test:cov": "npx nyc npx mocha --parallel **/**/*.test.js",
     "start": "nodemon --inspect src/index.app.js"
   },

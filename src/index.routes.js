@@ -27,6 +27,10 @@ class AppRouter {
       .route('/api/exames/:id')
       .delete(this.examesController.remove)
       .put(this.examesController.update)
+    this.router
+      .route('/api/exames/associar')
+      .post(this.examesController.associarLab)
+ 
     return this;
   }
 

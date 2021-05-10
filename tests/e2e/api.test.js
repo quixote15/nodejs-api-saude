@@ -4,6 +4,7 @@ import app from '../../src/index.app.js'
 import assert from 'assert'
 
 const examesUrl = '/api/exames'
+const associacaoUrl = '/api/exames/associar'
 const labsUrl = '/api/labs'
 
 describe('Api E2e Test Suite', () => {
@@ -106,5 +107,20 @@ describe('Api E2e Test Suite', () => {
       assert.ok(response.status);
       assert.deepStrictEqual(response.text, 'Laboratorio removido.')
     })
+  })
+
+  describe(associacaoUrl, () => {
+    it('should associate an active lab with an exame', async () => {
+      const response = await request(app)
+      .post(associacaoUrl)
+      .send({
+        exame_id: "",
+        lab_id: ""
+      })
+      .expect(200);
+
+      assert.ok(response.status);
+      assert.deepStrictEqual(response.text, 'Exame associado.')
+    });
   })
 })
