@@ -7,14 +7,14 @@ import Assert from 'assert'
 const { rejects, deepStrictEqual } = Assert;
 
 import ValidationError from '../../src/utils/ValidationError.js';
-import { assert } from 'console';
+
 const mocks = {
   validExame: {
     id: '1',
     nome: 'Teste',
     tipo: 'imagem',
     status: 'ativo',
-    labs: [],
+    labsAssociados: [],
   },
   validLab: {
     id: '2',
@@ -59,7 +59,7 @@ describe('ExamesService Test Suite', () => {
     const validLab = Object.create(mocks.validLab);
     const exameAssociado = {
       ...mocks.validExame,
-      labs: [validLab.id]
+      labsAssociados: [validLab.id]
     }
 
     const associacao = {
@@ -82,12 +82,11 @@ describe('ExamesService Test Suite', () => {
       lab_id: mocks.validLab.id
     }
 
-    console.log('exame: ', mocks.validExame)
     sandbox.stub(labsRepository, labsRepository.findOne.name).resolves(mocks.validLab);
     sandbox.stub(examesRepository, examesRepository.findOne.name).resolves(mocks.validExame);
     sandbox.stub(examesRepository, examesRepository.update.name).resolves(mocks.validExame);
 
     const result = await exameService.associar(associacao);
-    deepStrictEqual(result, 'Exame Associado.')
+    deepStrictEqual(result, 'Exame associado.')
   })
 });

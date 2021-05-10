@@ -5,6 +5,7 @@ import assert from 'assert'
 
 const examesUrl = '/api/exames'
 const associacaoUrl = '/api/exames/associar'
+const deassociacaoUrl = '/api/exames/desassociar'
 const labsUrl = '/api/labs'
 
 describe('Api E2e Test Suite', () => {
@@ -17,9 +18,8 @@ describe('Api E2e Test Suite', () => {
         assert.deepStrictEqual(response.text, 'Wa Project is working!')
     })
   });
+
   describe(examesUrl, () => {
-  
-    
       it('should list active exames', async() => {
         const response = await request(app)
         .get(examesUrl)
@@ -64,7 +64,6 @@ describe('Api E2e Test Suite', () => {
           assert.deepStrictEqual(response.text, 'Exame removido.')
       })
   });
-
 
   describe(labsUrl,  () => {
     it('should create a new lab', async() => {
@@ -114,13 +113,28 @@ describe('Api E2e Test Suite', () => {
       const response = await request(app)
       .post(associacaoUrl)
       .send({
-        exame_id: "",
-        lab_id: ""
+        exame_id: "60985542a0c78c7f5f839844",
+        lab_id: "609869307fc1c2879f668ab5"
       })
       .expect(200);
 
       assert.ok(response.status);
       assert.deepStrictEqual(response.text, 'Exame associado.')
     });
+
+    it('should deassociate an active lab with an exame', async () => {
+    const response = await request(app)
+    .post(deassociacaoUrl)
+    .send({
+      exame_id: "60985542a0c78c7f5f839844",
+      lab_id: "609867b4070f6286d136c891"
+    })
+    .expect(200);
+
+    assert.ok(response.status);
+    assert.deepStrictEqual(response.text, 'Exame desassociado.')
   })
+  })
+
+  
 })

@@ -1,9 +1,9 @@
 import ExamesRepositoryFactory from '../repository/factories/exameFactory.js';
 import SchemaValidator from '../utils/validator.js'
-
+import ExamesService from '../services/factory/exameService.factory.js'
 const repository = ExamesRepositoryFactory.createInstance();
 const validator = new SchemaValidator();
-
+const service = ExamesService.createInstance()
 async function find(req, res) {
   try {
     const result = await repository.find({});
@@ -61,9 +61,21 @@ async function remove(req, res) {
 async function associarLab(req, res) {
   try {
     const { exame_id, lab_id} = req.body;
-    res.send(req.body);
+    const result = await service.associar({exame_id, lab_id});
+
+    res.send(result);
   } catch (error) {
+    console.log('Error:', error)
     res.status(500).send(error)
+  }
+}
+
+async function desassociarLab(req, res) {
+  try {
+    const result = await service.desassociar(req.body);
+    res.send(result);
+  } catch (error) {
+    res.status(500).send(error);
   }
 }
 
@@ -73,5 +85,6 @@ export default {
   find,
   update,
   remove,
-  associarLab
+  associarLab,
+  desassociarLab
 }

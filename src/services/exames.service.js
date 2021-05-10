@@ -9,11 +9,12 @@ class ExamesService {
   
 
   async associar({exame_id, lab_id}) {
-    const errors = [];
+
     const labPromise = this.labsRepository.findOne(lab_id);
     const examePromise = this.examesRepository.findOne(exame_id);
     const [lab, exame] = await Promise.all([labPromise, examePromise]);
-    const alreadyAssociated = exame.labs.find(currentLab => {
+
+    const alreadyAssociated = exame.labsAssociados.find(currentLab => {
       return currentLab === lab_id
     });
 
@@ -26,13 +27,13 @@ class ExamesService {
       throw new ValidationError('Exame já está associado com esse laboratório.');
     }
     
-    
-    await this.examesRepository.update({_id: exame_id}, {$push: {labs: lab_id}});
-    return 'Exame Associado.'
+    await this.examesRepository.update({_id: exame_id}, {$push: {labsAssociados: lab_id}});
+    return 'Exame associado.'
   }
 
-  desassociar(){
-
+  async desassociar({exame_id, lab_id}){
+    await this.examesRepository.update({_id: exame_id}, {$pullAll: {labsAssociados: [lab_id]}});
+    return 'Exame desassociado.'
   }
 }
 
