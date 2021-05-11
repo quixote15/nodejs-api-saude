@@ -37,7 +37,9 @@ const swaggerOptions = {
       title: "Wa Project API",
       description: "Uma Api Nodejs para área da saude.",
       contact: {
-        name: "Tiago C. Santos"
+        name: "Tiago C. Santos",
+        url: "https://swagger.io",
+        email: "santos2tiago@gmail.com"
       },
       servers: ["http://localhost:3000"]
     }

@@ -1,4 +1,11 @@
-
+/**
+ * @swagger
+ * tags:
+ *   name: Exames
+ *   description: Gerenciamentos de exames 
+ *   name: Labs
+ *   description: Gerenciamentos de laboratórios 
+ */
 /**
  * @swagger
  *  components:
@@ -18,6 +25,21 @@
  *        example:
  *           nome: exame de sangue
  *           tipo: imagem
+ *      labBody:
+ *        required: 
+ *          - nome
+ *          - endereco
+ *        description: Objeto com dados para criar um novo laboratorio
+ *        schema:
+ *          type: object
+ *          properties:
+ *            nome:
+ *              type: string
+ *            endereco:
+ *              type: string
+ *        example:
+ *           nome: exame de sangue
+ *           endereco: Av. rio branco, 300 - centro - RJ
  * 
  *    schemas:
  *      ApiError:
@@ -119,6 +141,7 @@ class AppRouter {
      * @swagger
      * /api/exames:
      *  get:
+     *    tags: [Exames]
      *    description: Endpoint responsável em consultar e retornar os exames
      *    responses:
      *      '200':
@@ -137,6 +160,7 @@ class AppRouter {
      * 
      *  post:
      *    description: Endpoint responsável criar um exame e deixá-lo ativo por padrão.
+     *    tags: [Exames]
      *    requestBody:
      *      content:
      *        application/json:
@@ -169,6 +193,7 @@ class AppRouter {
      * /api/exames/{id}:
      *  delete:
      *    description: Endpoint responsável em remover logicamente um exame
+     *    tags: [Exames]
      *    parameters:
      *      - in: path
      *        name: id
@@ -193,6 +218,7 @@ class AppRouter {
      *              $ref: '#/components/schemas/ApiError'      
      *  put:
      *    description: Endpoint responsável em atualizar um exame
+     *    tags: [Exames]
      *    requestBody:
      *      content:
      *        application/json:
@@ -238,10 +264,118 @@ class AppRouter {
   }
 
   setLabsRoutes() {
+    /**
+     * @swagger
+     * /api/labs:
+     *  get:
+     *    tags: [Labs]
+     *    description: Endpoint responsável em consultar e retornar os laboratórios
+     *    responses:
+     *      '200':
+     *        content: 
+     *          application/json:
+     *            schema:
+     *              type: array
+     *              items: 
+     *                $ref: '#/components/schemas/Laboratorio'
+     *      '500':
+     *        content:
+     *          application/json:
+     *            schema:
+     *               type: object
+     *               $ref: '#/components/schemas/ApiError'
+     * 
+     *  post:
+     *    description: Endpoint responsável criar um laboratório e deixá-lo ativo por padrão.
+     *    tags: [Labs]
+     *    requestBody:
+     *      content:
+     *        application/json:
+     *          schema:
+     *            $ref: '#/components/requestBodies/labBody'
+     *          
+     *    responses:
+     *     '200': 
+     *      description: Laboratório criado.
+     *     '400':
+     *       content:
+     *         application/json:
+     *           schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'
+     *     '500':
+     *       content:
+     *         application/json:
+     *           schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'
+     */
     this.router
     .route('/api/labs')
     .get(this.labsController.find)
     .post(this.labsController.create)
+
+
+
+     /**
+     * @swagger
+     * /api/labs/{id}:
+     *  delete:
+     *    description: Endpoint responsável em remover logicamente um laboratório
+     *    tags: [Labs]
+     *    parameters:
+     *      - in: path
+     *        name: id
+     *        required: true
+     *        schema:
+     *          type: string
+     *        description: Identificador Hash no padrão UUID v4
+     *    responses:
+     *      '200':
+     *        description: Laboratorio removido.
+     *      '400':
+     *        content:
+     *          application/json:
+     *            schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'      
+     *      '500':
+     *        content:
+     *          application/json:
+     *            schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'      
+     *  put:
+     *    description: Endpoint responsável em atualizar um Laboratorio
+     *    tags: [Labs]
+     *    requestBody:
+     *      content:
+     *        application/json:
+     *          schema:
+     *            $ref: '#/components/requestBodies/labBody'
+     *    parameters:
+     *      - in: path
+     *        name: id
+     *        required: true
+     *        schema:
+     *          type: string
+     *        description: Identificador Hash no padrão UUID v4
+     *    responses:
+     *      '200':
+     *        description: Laboratorio atualizado.
+     *      '400':
+     *        content:
+     *          application/json:
+     *            schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'      
+     *      '500':
+     *        content:
+     *          application/json:
+     *            schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'      
+     */
     this.router
     .route('/api/labs/:id')
     .delete(this.labsController.remove)
