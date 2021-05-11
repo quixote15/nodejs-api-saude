@@ -164,10 +164,68 @@ class AppRouter {
       .get(this.examesController.find)
       .post(this.examesController.create);
 
+    /**
+     * @swagger
+     * /api/exames/{id}:
+     *  delete:
+     *    description: Endpoint responsável em remover logicamente um exame
+     *    parameters:
+     *      - in: path
+     *        name: id
+     *        required: true
+     *        schema:
+     *          type: string
+     *        description: Identificador Hash no padrão UUID v4
+     *    responses:
+     *      '200':
+     *        description: Exame removido.
+     *      '400':
+     *        content:
+     *          application/json:
+     *            schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'      
+     *      '500':
+     *        content:
+     *          application/json:
+     *            schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'      
+     *  put:
+     *    description: Endpoint responsável em atualizar um exame
+     *    requestBody:
+     *      content:
+     *        application/json:
+     *          schema:
+     *            $ref: '#/components/requestBodies/exameBody'
+     *    parameters:
+     *      - in: path
+     *        name: id
+     *        required: true
+     *        schema:
+     *          type: string
+     *        description: Identificador Hash no padrão UUID v4
+     *    responses:
+     *      '200':
+     *        description: Exame atualizado.
+     *      '400':
+     *        content:
+     *          application/json:
+     *            schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'      
+     *      '500':
+     *        content:
+     *          application/json:
+     *            schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'      
+     */
     this.router
       .route('/api/exames/:id')
       .delete(this.examesController.remove)
       .put(this.examesController.update)
+
     this.router
       .route('/api/exames/associar')
       .post(this.examesController.associarLab)
