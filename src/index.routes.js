@@ -99,7 +99,7 @@ class AppRouter {
      *  get:
      *    description: Endpoint simples de teste de conexao da api
      *    responses:
-     *      '200': 'Wa Project is working!'
+     *      '200': Wa Project is working!
      */
     this.router.route('/api/hello')
       .get((req, res) => {
@@ -144,7 +144,20 @@ class AppRouter {
      *            $ref: '#/components/requestBodies/exameBody'
      *          
      *    responses:
-     *      '200': 'Wa Project is working!'
+     *     '200': 
+     *      description: Exame criado.
+     *     '400':
+     *       content:
+     *         application/json:
+     *           schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'
+     *     '500':
+     *       content:
+     *         application/json:
+     *           schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'
      */
     this.router
       .route('/api/exames')
