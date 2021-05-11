@@ -5,6 +5,8 @@
  *   description: Gerenciamentos de exames 
  *   name: Labs
  *   description: Gerenciamentos de laboratórios 
+ *   name: Associar
+ *   description: Gerenciar associaçao entre labs e exames 
  */
 /**
  * @swagger
