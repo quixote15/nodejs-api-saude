@@ -1,3 +1,5 @@
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsDoc from "swagger-jsdoc";
 import dotenv from 'dotenv'
 import express, {Router} from 'express';
 
@@ -11,7 +13,7 @@ import ExamesController from './controllers/exames.controller.js'
 import LabsController from './controllers/labs.controller.js'
 
 dotenv.config()
-//import swaggerUi from 'swagger-ui-express';
+
 const routerDeps = {
   routerAdapter: new Router(),
   examesController: ExamesController,
@@ -27,10 +29,31 @@ const appDeps = {
   databaseAdapter,
 }
 
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: '3.0.0',
+    info: {
+      version: "1.0.0",
+      title: "Wa Project API",
+      description: "Uma Api Nodejs para área da saude.",
+      contact: {
+        name: "Tiago C. Santos"
+      },
+      servers: ["http://localhost:3000"]
+    }
+  },
+  // ['.routes/*.js']
+  apis: ["./src/index.routes.js"]
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
 const app = new Application(appDeps);
 const PORT = process.env.PORT || 3000;
 
-const serverInstance = app.init(PORT)
+const serverInstance = app
+.setDocs(swaggerUi, swaggerDocs)
+.init(PORT)
 
 
 

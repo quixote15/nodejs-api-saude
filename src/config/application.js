@@ -30,6 +30,11 @@ class Application {
     this.databaseAdapter.connect();
     return this;
   }
+
+  setDocs(uiAdapter, docsConfig) {
+    this.app.use("/api-docs", uiAdapter.serve, uiAdapter.setup(docsConfig));
+    return this;
+  }
   
 
   init(port = 3000) {
