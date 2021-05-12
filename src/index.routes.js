@@ -1,12 +1,12 @@
 /**
  * @swagger
  * tags:
- *   name: Exames
- *   description: Gerenciamentos de exames 
- *   name: Labs
- *   description: Gerenciamentos de laboratórios 
- *   name: Associar
- *   description: Gerenciar associaçao entre labs e exames 
+ *   - name: Exames
+ *     description: Gerenciamentos de exames 
+ *   - name: Labs
+ *     description: Gerenciamentos de laboratórios 
+ *   - name: Associar
+ *     description: Gerenciar associaçao entre labs e exames 
  */
 /**
  * @swagger
@@ -386,7 +386,6 @@ class AppRouter {
   }
 
   build() {
-    console.log('This returns all routes', this.router)
     this
     .setApiRoutes()
     .setExamesRoutes()
