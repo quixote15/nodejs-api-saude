@@ -7,7 +7,7 @@
   "scripts": {
     "test": "npx mocha -w --parallel **/**/*.test.js",
     "test:unit": "npx mocha -w --parallel **/unit/*.test.js",
-    "test:cov": "npx nyc npx mocha --parallel  --timeout  20000 --exit **/**/*.test.js",
+    "test:cov": "npx nyc npx mocha -r reify --parallel  --timeout  20000 --exit **/**/*.test.js",
     "start": "nodemon --inspect src/index.app.js"
   },
   "keywords": [],
@@ -25,6 +25,7 @@
     "mocha": "^8.2.1",
     "nodemon": "^2.0.7",
     "nyc": "^15.1.0",
+    "reify": "^0.20.12",
     "sinon": "^10.0.0",
     "supertest": "^6.1.3"
   }

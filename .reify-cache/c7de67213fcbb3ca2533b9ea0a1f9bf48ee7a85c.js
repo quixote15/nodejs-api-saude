@@ -1,4 +1,4 @@
-class SchemaValidator {
+"use strict";class SchemaValidator {
   constructor(){
     this.errors = []
   }
@@ -29,4 +29,4 @@ class SchemaValidator {
   }
 }
 
-export default SchemaValidator;
+module.exportDefault(SchemaValidator);

@@ -1,8 +1,7 @@
-import {describe, it} from 'mocha';
-import request from 'supertest'
-import app from '../../src/index.app.js'
-import assert from 'assert'
-import ApiError from '../../src/utils/ApiError.js';
+"use strict";var describe,it;module.link('mocha',{describe(v){describe=v},it(v){it=v}},0);var request;module.link('supertest',{default(v){request=v}},1);var app;module.link('../../src/index.app.js',{default(v){app=v}},2);var assert;module.link('assert',{default(v){assert=v}},3);
+
+
+
 
 const examesUrl = '/api/exames'
 const associacaoUrl = '/api/exames/associar'
@@ -41,23 +40,6 @@ describe('Api E2e Test Suite', () => {
         assert.ok(response.status);
         assert.deepStrictEqual(response.text, 'Exame criado.')
       });
-
-       it('should not create an invalid exame', async() => {
-        const response = await request(app)
-        .post(examesUrl)
-        .send({
-          nome: "",
-          tipo: "imagem"
-        })
-        .expect(422);
-
-        const expected = ApiError.getValidationError("nome deve conter pelo menos 4 caracteres.")
-        assert.deepStrictEqual(response.status, expected.code);
-        assert.deepStrictEqual(response.body.code, expected.code)
-        assert.deepStrictEqual(response.body.errorId, expected.errorId)
-        assert.deepStrictEqual(response.body.errorMessage, expected.errorMessage)
-      
-    });
     
       it('should update an exame', async () => {
         const examId = '6096f2edc041a25f1f5325cc'
@@ -96,24 +78,6 @@ describe('Api E2e Test Suite', () => {
       assert.ok(response.status);
       assert.deepStrictEqual(response.text,'Laboratorio criado.')
     });
-    
-    it('should not create an invalid lab', async() => {
-        const response = await request(app)
-        .post(labsUrl)
-        .send({
-          nome: 'La',
-          endereco: 'Av. Souza lima, 1200 - Jardim hebrom - SP'
-        })
-        .expect(422);
-
-        const expected = ApiError.getValidationError("nome deve conter pelo menos 4 caracteres.")
-        assert.deepStrictEqual(response.status, expected.code);
-        assert.deepStrictEqual(response.body.code, expected.code)
-        assert.deepStrictEqual(response.body.errorId, expected.errorId)
-        assert.deepStrictEqual(response.body.errorMessage, expected.errorMessage)
-      
-    });
-
 
     it('should list all active labs', async () => {
       const response = await request(app)

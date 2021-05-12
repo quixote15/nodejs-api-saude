@@ -1,7 +1,5 @@
-class SchemaValidator {
-  constructor(){
-    this.errors = []
-  }
+"use strict";class SchemaValidator {
+  
   
   validateNome(schema) {
     const {nome} = schema;
@@ -29,4 +27,4 @@ class SchemaValidator {
   }
 }
 
-export default SchemaValidator;
+module.exportDefault(SchemaValidator);
