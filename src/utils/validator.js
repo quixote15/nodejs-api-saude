@@ -7,7 +7,7 @@ class SchemaValidator {
       return this;
     }
 
-    this.errors.push({message: 'nome is required.'})
+    this.errors.push({message: 'nome deve conter pelo menos 4 caracteres.'})
   }
 
   validateStatus(schema) {
@@ -17,7 +17,7 @@ class SchemaValidator {
       return this;
     }
 
-    this.errors.push({message: 'status is invalid.'})
+    this.errors.push({message: 'status deve ser ativo ou inativo.'})
   }
 
   validate(schema) {

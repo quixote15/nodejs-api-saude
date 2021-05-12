@@ -1,15 +1,17 @@
 import ExamesRepositoryFactory from '../repository/factories/exameFactory.js';
 import SchemaValidator from '../utils/validator.js'
 import ExamesService from '../services/factory/exameService.factory.js'
+import ApiError from '../utils/ApiError.js';
 const repository = ExamesRepositoryFactory.createInstance();
 const validator = new SchemaValidator();
-const service = ExamesService.createInstance()
+const service = ExamesService.createInstance();
+
 async function find(req, res) {
   try {
     const result = await repository.find({});
     res.send(result);
   } catch (error) {
-    res.status(403).send(error);
+    res.status(500).send(ApiError.getInternalServerError());
   }
 }
 
@@ -21,19 +23,17 @@ async function create(req, res) {
     status: 'ativo'
   }
   try {
-    console.log('validator: ', validator);
-    
     const errors = validator.validate(exame);
-    
     if(errors.length > 0) {
-      return res.status(403).send(errors);
+      const [currentError] = errors;
+      return res.status(422).send(ApiError.getValidationError(currentError.message));
     }
 
     await repository.create(exame);
 
     res.send('Exame criado.')
   } catch (error) {
-    res.status(500).send({message: 'Erro interno.'});
+    res.status(500).send(ApiError.getInternalServerError());
   }
 }
 
@@ -43,7 +43,7 @@ async function update(req, res) {
     await repository.update({_id: examId}, req.body);
     res.send('Exame atualizado.')
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send(ApiError.getInternalServerError());
   }
 }
 
@@ -53,7 +53,8 @@ async function remove(req, res) {
       await repository.remove({_id: examId});
       res.send('Exame removido.')
     } catch (error) {
-      res.status(500).send(error);
+
+      res.status(500).send(ApiError.getInternalServerError());
     }
 }
 
@@ -65,8 +66,10 @@ async function associarLab(req, res) {
 
     res.send(result);
   } catch (error) {
-    console.log('Error:', error)
-    res.status(500).send(error)
+    if(error.name === 'ValidationError') {
+      return res.status(422).send(ApiError.getValidationError(error.message))
+    }
+    res.status(500).send(ApiError.getInternalServerError());
   }
 }
 
@@ -75,7 +78,10 @@ async function desassociarLab(req, res) {
     const result = await service.desassociar(req.body);
     res.send(result);
   } catch (error) {
-    res.status(500).send(error);
+    if(error.name === 'ValidationError') {
+      return res.status(422).send(ApiError.getValidationError(error.message))
+    }
+    res.status(500).send(ApiError.getInternalServerError());
   }
 }
 
