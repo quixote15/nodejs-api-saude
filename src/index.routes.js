@@ -27,6 +27,21 @@
  *        example:
  *           nome: exame de sangue
  *           tipo: imagem
+ *      associacaoBody:
+ *        required: 
+ *          - exame_id
+ *          - lab_id
+ *        description: Objeto com dados para criar associar um exame à um laboratorio
+ *        schema:
+ *          type: object
+ *          properties:
+ *            exame_id:
+ *              type: string
+ *            lab_id:
+ *              type: string
+ *        example:
+ *           exame_id: 609c6e57d874e06f4e210d2a
+ *           lab_id: 609868270ac7b18710190124
  *      labBody:
  *        required: 
  *          - nome
@@ -280,10 +295,66 @@ class AppRouter {
       .delete(this.examesController.remove)
       .put(this.examesController.update)
 
+    /**
+     * @swagger
+     * /api/exames/associar:
+     *  post:
+     *    description: Endpoint responsável associar um exame ativo a um exame ativo
+     *    tags: [Associar]
+     *    requestBody:
+     *      content:
+     *        application/json:
+     *          schema:
+     *            $ref: '#/components/requestBodies/associacaoBody'
+     *          
+     *    responses:
+     *     '200': 
+     *      description: Exame associado.
+     *     '400':
+     *       content:
+     *         application/json:
+     *           schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'
+     *     '500':
+     *       content:
+     *         application/json:
+     *           schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'
+     */
     this.router
       .route('/api/exames/associar')
       .post(this.examesController.associarLab)
  
+     /**
+     * @swagger
+     * /api/exames/desassociar:
+     *  post:
+     *    description: Endpoint responsável desassociar um exame ativo a um exame ativo
+     *    tags: [Associar]
+     *    requestBody:
+     *      content:
+     *        application/json:
+     *          schema:
+     *            $ref: '#/components/requestBodies/associacaoBody'
+     *          
+     *    responses:
+     *     '200': 
+     *      description: Exame desassociado.
+     *     '400':
+     *       content:
+     *         application/json:
+     *           schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'
+     *     '500':
+     *       content:
+     *         application/json:
+     *           schema:
+     *              type: object
+     *              $ref: '#/components/schemas/ApiError'
+     */
     this.router
       .route('/api/exames/desassociar')
       .post(this.examesController.desassociarLab);
@@ -294,6 +365,12 @@ class AppRouter {
      *  get:
      *    tags: [Exames]
      *    description: Endpoint responsável em consultar exames por nome e retornar os laboratórios associados
+     *    parameters:
+     *      - in: query
+     *        name: nome
+     *        required: true
+     *        schema:
+     *          type: string
      *    responses:
      *      '200':
      *        content: 
