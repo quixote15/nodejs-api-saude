@@ -1,8 +1,8 @@
-import {describe, it} from 'mocha';
-import request from 'supertest'
-import app from '../../src/index.app.js'
-import assert from 'assert'
-import ApiError from '../../src/utils/ApiError.js';
+"use strict";var describe,it;module.link('mocha',{describe(v){describe=v},it(v){it=v}},0);var request;module.link('supertest',{default(v){request=v}},1);var app;module.link('../../src/index.app.js',{default(v){app=v}},2);var assert;module.link('assert',{default(v){assert=v}},3);var ApiError;module.link('../../src/utils/ApiError.js',{default(v){ApiError=v}},4);
+
+
+
+
 
 const examesUrl = '/api/exames'
 const associacaoUrl = '/api/exames/associar'
@@ -15,13 +15,6 @@ describe('Api E2e Test Suite', () => {
     it('should request to hello world route', async() => {
       const response = await request(app)
         .get('/api/hello')
-        .expect(200)
-      
-        assert.deepStrictEqual(response.text, 'Wa Project is working!')
-    })
-    it('should request to root api route', async() => {
-      const response = await request(app)
-        .get('/')
         .expect(200)
       
         assert.deepStrictEqual(response.text, 'Wa Project is working!')
