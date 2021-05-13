@@ -104,6 +104,32 @@
  *           status: ativo
  *           _id: 60985542a0c78c7f5f839844
  * 
+ *      BuscaExames:
+ *        type: object
+ *        required:
+ *          - nome
+ *          - tipo
+ *          - status
+ *          - _id
+ *          - labsAssociados
+ *        properties:
+ *          nome:
+ *            type: string
+ *          tipo:
+ *            type: string
+ *            description: exame clinico | imagem
+ *          status:
+ *            type: string
+ *            enum: [ativo, inativo]
+ *          labsAssociados:
+ *            type: array
+ *        example:
+ *           nome: exame de sangue
+ *           tipo: exame clinico
+ *           status: ativo
+ *           _id: 60985542a0c78c7f5f839844
+ *           labsAssociados: []
+ *          
  * 
  */
 
@@ -262,6 +288,27 @@ class AppRouter {
       .route('/api/exames/desassociar')
       .post(this.examesController.desassociarLab);
 
+    /**
+     * @swagger
+     * /api/exames/autocomplete:
+     *  get:
+     *    tags: [Exames]
+     *    description: Endpoint responsável em consultar exames por nome e retornar os laboratórios associados
+     *    responses:
+     *      '200':
+     *        content: 
+     *          application/json:
+     *            schema:
+     *              type: array
+     *              items: 
+     *                $ref: '#/components/schemas/BuscaExames'
+     *      '500':
+     *        content:
+     *          application/json:
+     *            schema:
+     *               type: object
+     *               $ref: '#/components/schemas/ApiError'
+     * */
     this.router
       .route('/api/exames/autocomplete')
       .get(this.examesController.findLabsByExamName)
