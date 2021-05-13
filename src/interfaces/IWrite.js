@@ -9,8 +9,8 @@ class IWrite {
     throw new NotImplementedException(this.update.name)
   }
 
-  async delete(){
-    throw new NotImplementedException(this.delete.name);
+  async remove(){
+    throw new NotImplementedException(this.remove.name);
   }
 }
 
