@@ -6,8 +6,6 @@ class ExamesService {
     this.labsRepository = labsRepository;
   }
 
-  
-
   async associar({exame_id, lab_id}) {
 
     const labPromise = this.labsRepository.findOne(lab_id);

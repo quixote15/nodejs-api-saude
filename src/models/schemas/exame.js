@@ -21,6 +21,7 @@ const exameSchema = new Schema({
   labsAssociados: {type: [Schema.ObjectId], ref: 'Laboratorio'},
 });
 
+exameSchema.index({nome: 'text'});
 const Exame = model('Exame', exameSchema)
 
 export default Exame;

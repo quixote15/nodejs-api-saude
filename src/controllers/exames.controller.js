@@ -86,11 +86,18 @@ async function desassociarLab(req, res) {
 }
 
 
+async function findLabsByExamName(req, res) {
+  const {nome} = req.query;
+  const result = await repository.searchByName(nome)
+  res.send(result);
+}
+
 export default {
   create,
   find,
   update,
   remove,
   associarLab,
-  desassociarLab
+  desassociarLab,
+  findLabsByExamName
 }

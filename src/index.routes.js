@@ -260,7 +260,11 @@ class AppRouter {
  
     this.router
       .route('/api/exames/desassociar')
-      .post(this.examesController.desassociarLab)
+      .post(this.examesController.desassociarLab);
+
+    this.router
+      .route('/api/exames/autocomplete')
+      .get(this.examesController.findLabsByExamName)
  
     return this;
   }

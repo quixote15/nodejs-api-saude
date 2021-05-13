@@ -1,8 +1,10 @@
 import LabRepositoryFactory from '../repository/factories/LabsFactory.js';
+import ExamesRepositoryFactory from '../repository/factories/exameFactory.js';
 import SchemaValidator from '../utils/validator.js'
 import ApiError from '../utils/ApiError.js';
 
 const repository = LabRepositoryFactory.createInstance();
+const examRepository = ExamesRepositoryFactory.createInstance();
 const validator = new SchemaValidator();
 
 async function find(req, res) {
@@ -57,9 +59,16 @@ async function remove(req, res) {
   }
 }
 
+async function findLabsByExamName(req, res) {
+  const {nome} = req.query;
+  const result = await examRepository.searchByName(nome)
+  res.send(result);
+}
+
 export default {
   create,
   find,
   update,
-  remove
+  remove,
+  findLabsByExamName
 }

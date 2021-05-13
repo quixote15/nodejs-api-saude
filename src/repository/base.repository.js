@@ -20,7 +20,7 @@ class BaseRepository extends IWrite{
     return newSchema.save();
   }
 
-  async update({schemaId, data}) {
+  async update(schemaId, data) {
     return this.dbSchema.findOneAndUpdate(schemaId, data);
   }
   
