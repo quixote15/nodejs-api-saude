@@ -364,7 +364,7 @@ class AppRouter {
      * /api/exames/autocomplete:
      *  get:
      *    tags: [Exames]
-     *    description: Endpoint responsável em consultar exames por nome e retornar os laboratórios associados
+     *    description: Endpoint responsável em consultar exames por nome e retorna os laboratórios associados
      *    parameters:
      *      - in: query
      *        name: nome

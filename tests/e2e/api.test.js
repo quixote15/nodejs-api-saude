@@ -6,6 +6,7 @@ import ApiError from '../../src/utils/ApiError.js';
 
 const examesUrl = '/api/exames'
 const associacaoUrl = '/api/exames/associar'
+const buscaPorNomeUrl = '/api/exames/autocomplete';
 const deassociacaoUrl = '/api/exames/desassociar'
 const labsUrl = '/api/labs'
 
@@ -149,13 +150,35 @@ describe('Api E2e Test Suite', () => {
       const response = await request(app)
       .post(associacaoUrl)
       .send({
-        exame_id: "60985542a0c78c7f5f839844",
+        exame_id: "609c6e5ed874e06f4e210d2b",
         lab_id: "609869307fc1c2879f668ab5"
       })
       .expect(200);
 
       assert.ok(response.status);
       assert.deepStrictEqual(response.text, 'Exame associado.')
+    });
+
+    it('should deassociate an active lab with an exame', async () => {
+    const response = await request(app)
+    .post(deassociacaoUrl)
+    .send({
+      exame_id: "60985542a0c78c7f5f839844",
+      lab_id: "609867b4070f6286d136c891"
+    })
+    .expect(200);
+
+    assert.ok(response.status);
+    assert.deepStrictEqual(response.text, 'Exame desassociado.')
+  })
+  })
+  describe(buscaPorNomeUrl, () => {
+    it('should list exams & labs matching exame name', async () => {
+      const response = await request(app)
+      .get(`${buscaPorNomeUrl}?nome=exame`)
+      .expect(200);
+
+      assert.ok(response.status);
     });
 
     it('should deassociate an active lab with an exame', async () => {
