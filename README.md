@@ -1,7 +1,7 @@
 # NodeJs Api com testes E2E e principios Solid 
 
 ![Testes de API](https://github.com/PauloGoncalvesBH/sample-supertest/workflows/Testes%20de%20API/badge.svg)
-[![ServeRest API](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/PauloGoncalvesBH/ServeRest/)
+
 
 **Uma API para manutenção de laboratórios e exames feita em NodeJS + [Supertest](https://www.npmjs.com/package/supertest) e [Mocha](https://www.npmjs.com/package/mocha)**
 
@@ -13,7 +13,7 @@
   - [Pré-requisito](#pré-requisito)
   - [Executando os testes](#executando-os-testes)
   - [Resultado](#resultado)
-- [Sobre o projeto](#sobre-o-projeto)
+- [Arquitetura utilizada](#arquitetura-utilizada)
   - [Dependências utilizadas](#dependências-utilizadas)
   - [Estrutura de diretórios](#estrutura-de-diretórios)
   - [Ambiente](#ambiente)
@@ -25,7 +25,10 @@
 
 ### Pré-requisitos
 
-- [Git](https://git-scm.com/download/) e [Node.js](https://nodejs.org/en/download/) instalados.
+- [Git](https://git-scm.com/download/) 
+- [Node.js](https://nodejs.org/en/download/)
+- Docker
+- Docker compose
 
 ### O que tem nesse projeto
 
@@ -55,11 +58,13 @@ Todos os comandos abaixo são feitos no terminal
 git clone https://github.com/quixote15/nodejs-api-saude.git && cd nodejs-api-saude
 ```
 
-**2** - Instale as dependências do projeto:
+**2** - Com o docker e docker Compose já instalado em sua máquida, execute:
 
 ```sh
-npm install
+docker-compose up
 ```
+
+Após isso é só aguardar o docker subir os container e pronto. A api estará disponível em `localhost:3000` 
 
 ### Testes de API
 
@@ -86,7 +91,19 @@ O resultado dos testes são apresentados no terminal e em report HTML gerado com
 
 <img src=https://github.com/quixote15/nodejs-api-saude/blob/main/assets/tests.png height="400">
 
-## Sobre o projeto
+## Arquitetura utilizada
+
+Para essa api foi utilizada a arquitetura MVC que divide a aplicaçao em três partes. O Model, a View e o Controller. Além disso, principios S.O.L.I.D estão presentes em todo projeto visando reduzir a complexidade do código, o acoplamento entre classes, separar responsabilidades e definir muito bem as relações entre elas.
+
+O S.O.L.I.D é um acrônimo que representa cinco princípios da programação orientada a objetos e design de código teorizado por Robert C. Martin.
+
+[S]ingle Responsibility Principle (Princípio da Responsabilidade Única)
+[O]pen/Closed Principle (Princípio do Aberto/Fechado)
+[L]iskov Substitution Principle (Princípio da Substituição de Liskov)
+[I]nterface Segregation Principle (Princípio da Segregação de Interfaces)
+[D]ependency Inversion Principle (Princípio da Inversão de Dependências)
+
+Além disso, explorei alguns design parterns como o Builder, factory e o Generic repository.
 
 ### Dependências utilizadas
 | lib | descrição
@@ -131,11 +148,4 @@ api-project/
 
 ### Ambiente
 
-## Lint
 
-É boa prática que os arquivos estejam padronizados, seguindo o padrão de estilo do JS.
-Para isso é utilizado a lib [Standard](https://www.npmjs.com/package/standard).
-
-Após o término da sua implementação, execute:
-
-`npm run lint:fix`
