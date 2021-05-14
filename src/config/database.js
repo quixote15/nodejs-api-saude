@@ -3,7 +3,7 @@ class Database {
   static async connect() {
       const {
         MONGODB_NAME,
-        MONGODB_PASSWORD,
+        MONGODB_USERNAME,
         MONGODB_PASSWORD,
         MONGODB_HOST,
       } =  process.env
