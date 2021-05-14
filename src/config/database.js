@@ -8,7 +8,7 @@ class Database {
         MONGODB_HOST,
       } =  process.env
       const connectionString =  `mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_HOST}:27017/${MONGODB_NAME}?authSource=admin`;
-
+      console.log(connectionString)
       mongoose.Promise = global.Promise;
       mongoose.connect(connectionString, { 
           useNewUrlParser: true,
@@ -23,7 +23,7 @@ class Database {
       });
       mongoose.connection.on('connected', function() {
           console.log('Connection established to MongoDB');
-      });
+      }); 
 
       mongoose.connection.on('reconnected', function() {
           console.log('Reconnected to MongoDB');

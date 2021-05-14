@@ -9,6 +9,7 @@ services:
     depends_on:
       - db
     container_name: api-saude-container
+    network_mode: host
     command: npm start
   db:
     image: mongo
@@ -18,5 +19,6 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
-    ports:
-      - "27017:27017"
+      ports:
+        - "27017:27017"
+    network_mode: host
