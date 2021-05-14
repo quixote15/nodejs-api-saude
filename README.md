@@ -7,6 +7,7 @@
 
 - [Instalação e execução](#instalação-e-execução)
   - [Pré-requisitos](#pré-requisitos)
+  - [Sobre o projeto](#o-que-tem-nesse-projeto)
   - [Clonando o repositório](#clonando-o-repositório)
 - [Testes de API](#testes-de-api)
   - [Pré-requisito](#pré-requisito)
@@ -26,6 +27,24 @@
 
 - [Git](https://git-scm.com/download/) e [Node.js](https://nodejs.org/en/download/) instalados.
 
+### O que tem nesse projeto
+
+O objetivo desse projeto é construir uma API para manutenção de laboratórios e exames. O que tem até agora:
+
+| features | status |
+|--|--|
+| API RESTful NodeJS | ✅ |
+| CRUD Exames | ✅ |
+| CRUD Laboratórios | ✅ |
+| Associar um exame a um laboratório | ✅ |
+| Desassociar um exame a um laboratório | ✅ |
+| Busca laboratório por nome de exame | ✅ |
+| Documentaçao da Api com swagger & JSDOCS | ✅ |
+| Api configurada com Docker & docker-compose | ✅ |    
+| Api publicada no Digital ocean | ✅ |    
+| Script de deploy da Api  | ✅ |    
+
+TODO: Adicionar a possibilidade de executar cadastro, atualização e remoção em lote. Atualmente estou com um Mac de apenas 128gb de ssd e não consigo espaço suficiente para subir muitos containers docker. Visto que a solução que desejo implantar essa feature é com [background jobs usando Redis & Bull](https://github.com/quixote15/masterclass-bgjobs.git).
 ### Clonando o repositório
 
 Todos os comandos abaixo são feitos no terminal
@@ -33,7 +52,7 @@ Todos os comandos abaixo são feitos no terminal
 **1** - Faça um clone do repositório e acesse o diretório criado pelo clone.
 
 ```sh
-git clonehttps://github.com/quixote15/nodejs-api-saude.git && cd nodejs-api-saude
+git clone https://github.com/quixote15/nodejs-api-saude.git && cd nodejs-api-saude
 ```
 
 **2** - Instale as dependências do projeto:
