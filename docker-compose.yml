@@ -8,3 +8,13 @@ services:
     image: api-saude-image
     container_name: api-saude-container
     command: npm start
+  db:
+    image: mongo
+    container_name: db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    volumes:
+      - dbdata:/data/db
