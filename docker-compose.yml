@@ -6,6 +6,8 @@ services:
     ports:
       - "3000:3000"
     image: api-saude-image
+    depends_on:
+      - db
     container_name: api-saude-container
     command: npm start
   db:
