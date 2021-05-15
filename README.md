@@ -8,7 +8,7 @@
 - [Instalação e execução](#instalação-e-execução)
   - [Pré-requisitos](#pré-requisitos)
   - [Sobre o projeto](#o-que-tem-nesse-projeto)
-  - [Clonando o repositório](#clonando-o-repositório)
+  - [Executando o projeto](#executando-o-projeto)
 - [Testes de API](#testes-de-api)
   - [Pré-requisito](#pré-requisito)
   - [Executando os testes](#executando-os-testes)
@@ -94,6 +94,9 @@ Caso você não tenha o docker e docker-compose instalado pode utilizar o seguin
 - Instala o **NodeJS**
 - Instala o **npm**
 - Clona o projeto [Api Saude NodeJS](https://github.com/quixote15/nodejs-api-saude.git)
+
+O script acima é util quando existem mais de um ambiente de deployment ou 
+compartilhamento entre diversas pessoas no time. Garante compatibilidade e agilidade no setup. O código fonte de está [aqui](https://raw.githubusercontent.com/quixote15/deploy-scripts). 
 
 ### Testes de API
 
