@@ -59,7 +59,7 @@ Todos os comandos abaixo são feitos no terminal
 git clone https://github.com/quixote15/nodejs-api-saude.git && cd nodejs-api-saude
 ```
 
-**2** - Com o docker e docker Compose já instalado em sua máquida, execute:
+**2** - Com o Node v14+ já instalado em sua máquida, execute:
 
 ```sh
 npm run start
