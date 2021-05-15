@@ -48,9 +48,26 @@ O objetivo desse projeto é construir uma API para manutenção de laboratórios
 | Script de deploy da Api  | ✅ |    
 
 TODO: Adicionar a possibilidade de executar cadastro, atualização e remoção em lote. Atualmente estou com um Mac de apenas 128gb de ssd e não consigo espaço suficiente para subir muitos containers docker. Visto que a solução que desejo implantar essa feature é com [background jobs usando Redis & Bull](https://github.com/quixote15/masterclass-bgjobs.git).
-### Clonando o repositório
+## Executando o projeto
 
 Todos os comandos abaixo são feitos no terminal
+
+### Executando localmente
+**1** - Faça um clone do repositório e acesse o diretório criado pelo clone.
+
+```sh
+git clone https://github.com/quixote15/nodejs-api-saude.git && cd nodejs-api-saude
+```
+
+**2** - Com o docker e docker Compose já instalado em sua máquida, execute:
+
+```sh
+npm run start
+```
+
+Ao rodar o ambiente localmente, é necessário ter node instalado, gerenciar e verifica problemas de versões de dependencias, ter uma instancia de um banco MongoDb rodando e configurar as variáveis de ambiente no arquivo `.env`
+
+### Executando com Docker 
 
 **1** - Faça um clone do repositório e acesse o diretório criado pelo clone.
 
@@ -64,7 +81,19 @@ git clone https://github.com/quixote15/nodejs-api-saude.git && cd nodejs-api-sau
 docker-compose up
 ```
 
-Após isso é só aguardar o docker subir os container e pronto. A api estará disponível em `localhost:3000` 
+Após isso é só aguardar o docker subir os container e pronto. A api estará disponível em `localhost:3000`.
+
+Caso você não tenha o docker e docker-compose instalado pode utilizar o seguinte script para salvar alguns minutos ou até horas:
+
+```curl https://raw.githubusercontent.com/quixote15/deploy-scripts/master/install-api-saude.sh | sh```
+
+**install-api-saude.sh** faz o seguinte:
+
+- Instala o **Docker**
+- Instala o **Docker Compose**
+- Instala o **NodeJS**
+- Instala o **npm**
+- Clona o projeto [Api Saude NodeJS](https://github.com/quixote15/nodejs-api-saude.git)
 
 ### Testes de API
 
