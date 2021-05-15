@@ -16,7 +16,7 @@
 - [Arquitetura utilizada](#arquitetura-utilizada)
   - [Dependências utilizadas](#dependências-utilizadas)
   - [Estrutura de diretórios](#estrutura-de-diretórios)
-  - [Ambiente](#ambiente)
+  - [license](#license)
 - [Lint](#lint)
 
 ---
@@ -178,6 +178,7 @@ api-project/
 - :file_folder: [tests/](tests): Dir com os testes das rotas e arquivos que auxiliam a automação
 - :page_with_curl: [package.json](package.json): Arquivo com informações das dependências do projeto, licença, scripts, autor, etc. Para saber mais [clique aqui](https://docs.npmjs.com/files/package.json)
 
-### Ambiente
+# License
 
+[MIT License ](https://github.com/barbosamaatheus/english-talking-api/blob/master/LICENSE) ©
 
