@@ -1,6 +1,24 @@
-# NodeJs Api com testes E2E e principios Solid 
+
+<p align="center">
+  <img src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/masterclass.png" height="150" width="150" alt="logo" />
+</p>
+
+<h3 align="center">
+   NodeJs Api com testes E2E e principios Solid <br> :alien:
+</h3>
+
+<div align="center">
+
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ![Testes de API](https://github.com/PauloGoncalvesBH/sample-supertest/workflows/Testes%20de%20API/badge.svg)
+
+</div>
+
+# [Api Saude](http://bit.ly/nodeapisaude)
+
+* Deployed no Digital Ocean
 
 
 **Uma API para manutenção de laboratórios e exames feita em NodeJS + [Supertest](https://www.npmjs.com/package/supertest) e [Mocha](https://www.npmjs.com/package/mocha)**
